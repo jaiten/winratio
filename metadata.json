@@ -1,0 +1,6 @@
+{
+  "name": "WinRatio",
+  "description": "Prestige bid proposal and design agency for infrastructure and construction.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
