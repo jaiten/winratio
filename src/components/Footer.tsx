@@ -51,7 +51,7 @@ export default function Footer({ onNavClick }: FooterProps) {
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              alert("Work Winning Privacy Policy & NDA regulations match maximum UK and North America engineering proposal compliance frameworks.");
+              alert("WIN RATIO Privacy Policy & NDA regulations match maximum UK and North America engineering proposal compliance frameworks.");
             }}
             className="font-sans text-xs uppercase tracking-widest text-text-muted hover:text-accent-gold transition-colors duration-300 font-semibold"
           >
@@ -62,7 +62,7 @@ export default function Footer({ onNavClick }: FooterProps) {
 
       <div className="pt-6 border-t border-text-dark/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] tracking-[0.15em] text-text-muted/60 font-bold uppercase select-none">
         <p>
-          Copyright {currentYear} WORK WINNING. ALL RIGHTS RESERVED.
+          Copyright {currentYear} WIN RATIO. ALL RIGHTS RESERVED.
         </p>
         <p>
           EST. 2016 - VANCOUVER / NORTH AMERICA / UK
