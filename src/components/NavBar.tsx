@@ -5,18 +5,18 @@
 
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { ActiveTab } from '../types';
+import { ActiveTab, NavTab } from '../types';
 
 interface NavBarProps {
   activeTab: ActiveTab;
-  setActiveTab: (tab: ActiveTab) => void;
+  setActiveTab: (tab: NavTab) => void;
   onEnquireClick: () => void;
 }
 
 export default function NavBar({ activeTab, setActiveTab, onEnquireClick }: NavBarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleTabClick = (tab: ActiveTab) => {
+  const handleTabClick = (tab: NavTab) => {
     setActiveTab(tab);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,7 +31,7 @@ export default function NavBar({ activeTab, setActiveTab, onEnquireClick }: NavB
           className="font-serif text-2xl tracking-tighter text-text-dark font-medium transition-opacity hover:opacity-80 cursor-pointer"
           id="brand-logo"
         >
-          WIN RATIO
+          WIN / RATIO
         </button>
 
         {/* Desktop Navigation links */}

@@ -22,19 +22,11 @@ export default function Footer({ onNavClick }: FooterProps) {
           }}
           className="font-serif text-2xl tracking-tighter text-text-dark font-medium hover:opacity-80 transition-opacity cursor-pointer"
         >
-          WIN RATIO
+          WIN / RATIO
         </button>
         
         <div className="flex flex-wrap gap-x-8 gap-y-4">
-          <button
-            onClick={() => {
-              onNavClick('information');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="font-sans text-xs uppercase tracking-widest text-text-muted hover:text-accent-gold transition-colors duration-300 font-semibold"
-          >
-            INFORMATION
-          </button>
+         
           <a
             href="mailto:info@winratio.ca"
             className="font-sans text-xs uppercase tracking-widest text-text-muted hover:text-accent-gold transition-colors duration-300 font-semibold"
@@ -51,7 +43,7 @@ export default function Footer({ onNavClick }: FooterProps) {
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              alert("WIN RATIO Privacy Policy & NDA regulations match maximum UK and North America engineering proposal compliance frameworks.");
+              alert("WIN / RATIO privacy information is not included in this prototype.");
             }}
             className="font-sans text-xs uppercase tracking-widest text-text-muted hover:text-accent-gold transition-colors duration-300 font-semibold"
           >
@@ -62,7 +54,7 @@ export default function Footer({ onNavClick }: FooterProps) {
 
       <div className="pt-6 border-t border-text-dark/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] tracking-[0.15em] text-text-muted/60 font-bold uppercase select-none">
         <p>
-          Copyright {currentYear} WIN RATIO. ALL RIGHTS RESERVED.
+          Copyright {currentYear} WIN / RATIO. ALL RIGHTS RESERVED.
         </p>
         <p>
           EST. 2016 - VANCOUVER / NORTH AMERICA / UK

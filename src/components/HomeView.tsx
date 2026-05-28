@@ -44,7 +44,7 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
             variants={itemVariants}
             className="font-serif text-5xl md:text-8xl tracking-tighter text-text-dark font-medium leading-tight"
           >
-            WIN RATIO
+            WIN / RATIO
           </motion.h1>
 
           <motion.div 
@@ -56,7 +56,7 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
             variants={itemVariants}
             className="font-sans text-lg md:text-xl text-text-muted font-light max-w-2xl mx-auto leading-relaxed"
           >
-            We help companies win infrastructure and construction contracts through expert proposal writing, editing, and design.
+            We are a team of writers, editors, designers and project managers who help companies win work.
           </motion.p>
 
           <motion.div variants={itemVariants} className="mt-8">
@@ -78,7 +78,7 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
             {/* Left Header & Huge Credential */}
             <div className="md:col-span-8 flex flex-col gap-4">
               <span className="font-sans text-xs text-accent-gold uppercase tracking-[0.2em] font-semibold">
-                Institutional Credibility
+                Work Winning
               </span>
               <h2 className="font-serif text-4xl md:text-7xl text-text-dark leading-none tracking-tight">
                 $60B+ <span className="text-text-muted italic font-normal">in projects</span><br />completed since 2016
@@ -88,7 +88,7 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
             {/* Team Description Block */}
             <div className="md:col-span-4 pb-2">
               <p className="font-sans text-sm md:text-base text-text-muted border-l border-text-dark/20 pl-6 leading-relaxed">
-                Vancouver HQ, North America + UK, English-language services globally. Our team combines technical precision with high-stakes communication strategy.
+                Headquartered in Vancouver, with team members across North America and the UK, we support clients worldwide and across time zones.
               </p>
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
                   Founded 2016
                 </h3>
                 <p className="font-sans text-sm text-text-muted mt-2 leading-relaxed">
-                  A decade of specialized focus on large-scale infrastructure pursuits.
+                  Serving clients since 2016.
                 </p>
               </div>
             </div>
@@ -118,10 +118,10 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
               </span>
               <div className="flex flex-col">
                 <h3 className="font-serif text-2xl text-text-dark font-medium group-hover:text-accent-gold transition-colors duration-300">
-                  95% Projects Won
+                  Worldwide Support
                 </h3>
                 <p className="font-sans text-sm text-text-muted mt-2 leading-relaxed">
-                  A track record of conversion that sets the industry benchmark.
+                  English-language services for clients worldwide, across time zones.
                 </p>
               </div>
             </div>
@@ -132,10 +132,10 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
               </span>
               <div className="flex flex-col">
                 <h3 className="font-serif text-2xl text-text-dark font-medium group-hover:text-accent-gold transition-colors duration-300">
-                  12 Industries Served
+                  Diverse Sectors
                 </h3>
                 <p className="font-sans text-sm text-text-muted mt-2 leading-relaxed">
-                  From civil engineering and transit to institutional healthcare.
+                  Highways, transit, rail, buildings, energy, climate, tunnels, and mining.
                 </p>
               </div>
             </div>

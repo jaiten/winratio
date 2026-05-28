@@ -10,6 +10,7 @@ import HomeView from './components/HomeView';
 import ProjectsView from './components/ProjectsView';
 import ServicesView from './components/ServicesView';
 import InformationView from './components/InformationView';
+import EnquiryView from './components/EnquiryView';
 import Footer from './components/Footer';
 import { ActiveTab } from './types';
 
@@ -17,14 +18,8 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
 
   const handleEnquireClick = () => {
-    setActiveTab('services');
-    // Allow React state to update before attempting the scroll
-    setTimeout(() => {
-      const element = document.getElementById('enquiry-section');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 150);
+    setActiveTab('enquiry');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleExpertiseSelect = () => {
@@ -87,6 +82,18 @@ export default function App() {
             <InformationView onEnquireClick={handleEnquireClick} />
           </motion.div>
         );
+      case 'enquiry':
+        return (
+          <motion.div
+            key="enquiry"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <EnquiryView />
+          </motion.div>
+        );
       default:
         return null;
     }
@@ -97,7 +104,7 @@ export default function App() {
       {/* Top sticky Navigation header */}
       <NavBar
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={(tab) => setActiveTab(tab)}
         onEnquireClick={handleEnquireClick}
       />
 

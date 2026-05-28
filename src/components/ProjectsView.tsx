@@ -52,7 +52,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
           transition={{ delay: 0.1 }}
           className="font-sans text-base md:text-lg text-text-muted max-w-2xl leading-relaxed"
         >
-          A definitive archive of infrastructure pursuits and architectural delivery. We track both successful commissions and the rigorous lessons of unsuccessful bids.
+          A public archive of proposal, qualification, and technical documentation engagements across highways, transit, rail, buildings, energy, climate, tunnels, and mining.
         </motion.p>
       </header>
 
@@ -93,7 +93,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
         <div className="divide-y divide-text-dark/10">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => {
-              const isUnsuccessful = project.status === 'unsuccessful';
+              const isUnsuccessful = project.status === 'cancelled';
               return (
                 <motion.div
                   key={project.id}
@@ -192,11 +192,19 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
                     </span>
                     <span className="text-text-muted/30">•</span>
                     <span className={`font-sans text-[10px] uppercase tracking-[0.1em] font-bold px-2 py-0.5 rounded-sm ${
-                      selectedProject.status === 'successful' 
+                      selectedProject.status === 'won' || selectedProject.status === 'qualified' || selectedProject.status === 'successful'
                         ? 'bg-accent-gold/10 text-accent-gold' 
                         : 'bg-text-dark/10 text-text-muted'
                     }`}>
-                      {selectedProject.status === 'successful' ? 'Awarded' : 'Unsuccessful'}
+                      {selectedProject.status === 'won'
+                        ? 'Won'
+                        : selectedProject.status === 'qualified'
+                          ? 'Qualified'
+                          : selectedProject.status === 'successful'
+                            ? 'Successful'
+                            : selectedProject.status === 'cancelled'
+                              ? 'Cancelled'
+                              : 'Outcome not listed'}
                     </span>
                   </div>
                   <h2 className="font-serif text-3xl md:text-4xl text-text-dark tracking-tight leading-tight">
@@ -208,7 +216,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
                 <div className="grid grid-cols-3 gap-6 border-y border-text-dark/10 py-6 text-sm">
                   <div className="flex flex-col gap-1">
                     <span className="text-text-muted/60 text-xs uppercase tracking-widest font-semibold flex items-center gap-1.5">
-                      <Bookmark size={12} /> Client
+                      <Bookmark size={12} /> Engagement
                     </span>
                     <span className="text-text-dark font-medium">{selectedProject.client}</span>
                   </div>
@@ -220,7 +228,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
                   </div>
                   <div className="flex flex-col gap-1">
                     <span className="text-text-muted/60 text-xs uppercase tracking-widest font-semibold flex items-center gap-1.5">
-                      <DollarSign size={12} /> Project value
+                      <DollarSign size={12} /> Value / outcome
                     </span>
                     <span className="text-text-dark font-medium">{selectedProject.value}</span>
                   </div>
@@ -230,7 +238,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
                 <div className="flex flex-col gap-8 font-sans">
                   <div className="flex flex-col gap-2">
                     <h4 className="font-serif text-lg text-text-dark italic flex items-center gap-2">
-                      <Award size={16} className="text-accent-gold shrink-0" /> Proposal Scope of Work
+                      <Award size={16} className="text-accent-gold shrink-0" /> Project Summary
                     </h4>
                     <p className="text-sm md:text-base text-text-muted leading-relaxed font-light">
                       {selectedProject.scopeOfWork}
@@ -239,7 +247,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
 
                   <div className="flex flex-col gap-2 bg-text-dark/2 p-6 rounded-xs border-l-2 border-text-dark/20">
                     <h4 className="font-serif text-lg text-text-dark italic flex items-center gap-2">
-                      <Target size={16} className="text-text-dark shrink-0" /> The Bid Challenge
+                      <Target size={16} className="text-text-dark shrink-0" /> Proposal Context
                     </h4>
                     <p className="text-sm md:text-base text-text-muted leading-relaxed font-light">
                       {selectedProject.challenge}
@@ -248,7 +256,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
 
                   <div className="flex flex-col gap-2">
                     <h4 className="font-serif text-lg text-text-dark italic flex items-center gap-2 text-accent-gold">
-                      ★ WIN RATIO Proposal Solution
+                      WIN / RATIO Role
                     </h4>
                     <p className="text-sm md:text-base text-text-muted leading-relaxed font-light">
                       {selectedProject.solution}
@@ -260,7 +268,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
               {/* Drawer Call to Action */}
               <div className="p-8 border-t border-text-dark/10 bg-surface-low text-center">
                 <p className="font-sans text-xs text-text-muted mb-4 max-w-sm mx-auto">
-                  Interested in architecting a winning framework for a similar project? Call our advisory desk.
+                  Interested in support for a similar pursuit? Email or call WIN / RATIO.
                 </p>
                 <button
                   onClick={() => {

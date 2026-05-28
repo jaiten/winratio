@@ -24,7 +24,7 @@ export default function InformationView({ onEnquireClick }: InformationViewProps
             About
           </span>
           <h1 className="font-serif text-4xl md:text-6xl text-text-dark tracking-tight leading-none">
-            Proposal teams for winning work.
+            About WIN / RATIO
           </h1>
         </div>
 
@@ -73,6 +73,7 @@ export default function InformationView({ onEnquireClick }: InformationViewProps
             604 928 3534
           </a>
         </div>
+        
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">

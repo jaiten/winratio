@@ -9,7 +9,7 @@ export interface Project {
   category: string;
   subCategory: string;
   year: number;
-  status: 'successful' | 'unsuccessful';
+  status: 'won' | 'qualified' | 'successful' | 'cancelled' | 'not-listed';
   client: string;
   location: string;
   value: string;
@@ -18,7 +18,8 @@ export interface Project {
   solution: string;
 }
 
-export type ActiveTab = 'home' | 'projects' | 'services' | 'information';
+export type ActiveTab = 'home' | 'projects' | 'services' | 'information' | 'enquiry';
+export type NavTab = Exclude<ActiveTab, 'enquiry'>;
 
 export interface Capability {
   id: string;
