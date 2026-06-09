@@ -90,23 +90,28 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
         </div>
 
         {/* Project table rows */}
-        <div className="divide-y divide-text-dark/10">
-          <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedCategory}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.12 }}
+            className="divide-y divide-text-dark/10"
+          >
             {filteredProjects.map((project, index) => {
               const isUnsuccessful = project.status === 'cancelled';
               return (
                 <motion.div
                   key={project.id}
-                  layoutId={`project-row-${project.id}`}
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ delay: index * 0.04 }}
+                  transition={{ delay: Math.min(index, 8) * 0.03, duration: 0.18 }}
                   onClick={() => setSelectedProject(project)}
-                  className={`grid grid-cols-12 py-7 px-4 items-baseline cursor-pointer group transition-all duration-300 ${
-                    isUnsuccessful 
-                      ? 'opacity-35 hover:opacity-85' 
-                      : 'hover:bg-text-dark/2 border-l-0 hover:border-l-2 hover:border-accent-gold hover:pl-6'
+                  className={`grid grid-cols-12 py-7 px-4 items-baseline cursor-pointer group transition-all duration-300 border-l-2 ${
+                    isUnsuccessful
+                      ? 'opacity-35 hover:opacity-85 border-transparent'
+                      : 'border-transparent hover:bg-surface-low hover:border-accent-gold'
                   }`}
                 >
                   <div className="col-span-7 sm:col-span-6 pr-4">
@@ -125,13 +130,13 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
                 </motion.div>
               );
             })}
-          </AnimatePresence>
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-16 font-serif text-xl italic text-text-muted">
-              No matching archive records found.
-            </div>
-          )}
-        </div>
+            {filteredProjects.length === 0 && (
+              <div className="text-center py-16 font-serif text-xl italic text-text-muted">
+                No matching archive records found.
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Archive pagination/CTA block */}
@@ -154,7 +159,7 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-text-dark/20 backdrop-blur-xs z-50 cursor-pointer"
+              className="fixed inset-0 bg-text-dark/30 md:bg-text-dark/20 md:backdrop-blur-xs z-50 cursor-pointer"
             />
 
             {/* Slide-out Panel */}
@@ -162,12 +167,12 @@ export default function ProjectsView({ onEnquireClick }: ProjectsViewProps) {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 26, stiffness: 220 }}
+              transition={{ type: 'tween', ease: [0.32, 0, 0.08, 1], duration: 0.28 }}
               className="fixed top-0 right-0 bottom-0 w-full sm:max-w-xl md:max-w-2xl bg-bg-warm h-full shadow-2xl z-50 overflow-y-auto border-l border-text-dark/15 flex flex-col"
               id="project-drawer"
             >
               {/* Drawer Header */}
-              <div className="px-8 py-6 border-b border-text-dark/10 flex items-center justify-between sticky top-0 bg-bg-warm/95 backdrop-blur-sm z-10">
+              <div className="px-8 py-6 border-b border-text-dark/10 flex items-center justify-between sticky top-0 bg-bg-warm z-10">
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="font-sans text-xs uppercase tracking-widest text-text-muted hover:text-text-dark flex items-center gap-2 cursor-pointer"

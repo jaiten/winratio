@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { EXPERTISE_ITEMS } from '../data';
@@ -14,7 +15,8 @@ interface HomeViewProps {
 }
 
 export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeViewProps) {
-  // Container animation variants for clean staggered rendering
+  const [hoveredExpertise, setHoveredExpertise] = useState<number | null>(null);
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -143,7 +145,7 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
         </div>
       </section>
 
-      {/* Aesthetic Interstitial: The Roman Numeral List Pattern */}
+      {/* Expertise Section */}
       <section className="py-24 md:py-32 px-6 max-w-5xl mx-auto w-full">
         <div className="border-t border-b border-text-dark/10 py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 items-start gap-8">
@@ -152,39 +154,52 @@ export default function HomeView({ onSeeWorkClick, onExpertiseSelect }: HomeView
                 Expertise
               </h4>
             </div>
-            
-            <div className="md:col-span-9 flex flex-col w-full">
-              <ul className="flex flex-col w-full divide-y divide-text-dark/5">
+
+            <div className="md:col-span-9 flex flex-col md:flex-row md:gap-12 w-full">
+              {/* Item list */}
+              <ul className="flex flex-col divide-y divide-text-dark/5 md:min-w-[260px] md:flex-shrink-0">
                 {EXPERTISE_ITEMS.map((item, index) => (
                   <motion.li
                     key={item.id}
                     onClick={() => onExpertiseSelect(index)}
-                    className="flex justify-between items-center py-6 group cursor-pointer hover:bg-surface-low px-4 -mx-4 transition-colors duration-300 rounded"
-                    whileHover={{ x: 6 }}
+                    onMouseEnter={() => setHoveredExpertise(index)}
+                    onMouseLeave={() => setHoveredExpertise(null)}
+                    className="flex items-baseline gap-6 py-6 group cursor-pointer hover:bg-surface-low px-4 -mx-4 transition-colors duration-300 rounded"
+                    whileHover={{ x: 4 }}
                   >
-                    <div className="flex items-baseline gap-6">
-                      <span className="font-serif text-2xl md:text-4xl italic text-text-dark/30 select-none w-10">
-                        {item.numeral}
-                      </span>
-                      <div className="flex flex-col">
-                        <span className="font-serif text-lg md:text-2xl text-text-dark group-hover:text-accent-gold transition-colors duration-300">
-                          {item.title}
-                        </span>
-                        <p className="font-sans text-sm text-text-muted max-w-xl mt-1 opacity-0 group-hover:opacity-100 h-0 group-hover:h-auto overflow-hidden transition-all duration-500">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-2">
-                      <span className="font-sans text-xs uppercase tracking-[0.1em] text-text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:inline">
-                        Explore Capability
-                      </span>
-                      <ArrowUpRight size={18} className="text-text-dark/40 group-hover:text-accent-gold transition-colors duration-300" />
-                    </div>
+                    <span className="font-serif text-2xl md:text-3xl italic text-text-dark/30 select-none w-10 shrink-0">
+                      {item.numeral}
+                    </span>
+                    <span className="font-serif text-lg md:text-xl text-text-dark group-hover:text-accent-gold transition-colors duration-300">
+                      {item.title}
+                    </span>
+                    <ArrowUpRight size={16} className="text-text-dark/30 group-hover:text-accent-gold transition-colors duration-300 ml-auto shrink-0" />
                   </motion.li>
                 ))}
               </ul>
+
+              {/* Description panel */}
+              <div className="hidden md:flex flex-1 items-start pt-7 min-h-[160px]">
+                <AnimatePresence mode="wait">
+                  {hoveredExpertise !== null && (
+                    <motion.div
+                      key={hoveredExpertise}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -6 }}
+                      transition={{ duration: 0.18 }}
+                      className="flex flex-col gap-3 border-l border-text-dark/15 pl-8"
+                    >
+                      <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold font-bold">
+                        {EXPERTISE_ITEMS[hoveredExpertise].title}
+                      </span>
+                      <p className="font-sans text-sm text-text-muted leading-relaxed">
+                        {EXPERTISE_ITEMS[hoveredExpertise].description}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ export default function NavBar({ activeTab, setActiveTab, onEnquireClick }: NavB
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg-warm/95 backdrop-blur-md border-b border-text-dark/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg-warm/98 md:bg-bg-warm/95 md:backdrop-blur-md border-b border-text-dark/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
         {/* Brand Logo */}
         <button
@@ -67,7 +67,7 @@ export default function NavBar({ activeTab, setActiveTab, onEnquireClick }: NavB
             }`}
             id="nav-info"
           >
-            INFORMATION
+            ABOUT US
           </button>
         </div>
 
@@ -118,7 +118,7 @@ export default function NavBar({ activeTab, setActiveTab, onEnquireClick }: NavB
               activeTab === 'information' ? 'text-accent-gold' : 'text-text-dark'
             }`}
           >
-            INFORMATION
+            ABOUT US
           </button>
           <button
             onClick={() => {

@@ -21,10 +21,10 @@ export default function InformationView({ onEnquireClick }: InformationViewProps
       <section className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
         <div className="md:col-span-4">
           <span className="font-sans text-xs uppercase text-accent-gold tracking-[0.2em] font-bold mb-4 block">
-            About
+            About Us
           </span>
           <h1 className="font-serif text-4xl md:text-6xl text-text-dark tracking-tight leading-none">
-            About WIN / RATIO
+            About Us
           </h1>
         </div>
 
