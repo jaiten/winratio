@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="3" fill="#171614"/>
-  <text x="16" y="24" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-weight="500" fill="#775a19" text-anchor="middle" letter-spacing="-1">W</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="WIN / RATIO">
+  <rect width="32" height="32" rx="7" fill="#171614"/>
+  <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="5,10 8.4,22.3 11.8,15 15.2,22.3 18.6,10" stroke="#fbf9f4"/>
+    <line x1="21.3" y1="22.6" x2="27" y2="9.6" stroke="#b08a3a"/>
+  </g>
 </svg>
